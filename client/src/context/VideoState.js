@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import { message } from "antd";
 
-// const URL = "http://localhost:5000/";
+// const URL = "http://localhost:3001/";
 // const SERVER_URL = "http://localhost:5000/";
 
 // export const socket = io(URL);
@@ -26,7 +26,8 @@ const VideoState = ({ children }) => {
   const [userMicStatus, setUserMicStatus] = useState();
   const [msgRcv, setMsgRcv] = useState("");
   const [screenShare, setScreenShare] = useState(false)
-  const [room, setRoom] = useState("");
+  const [room, 
+  ] = useState("");
   const [message, setMessage] = useState("");
   const joinRoom = () => {
     if (room !== "") {
@@ -56,7 +57,7 @@ const VideoState = ({ children }) => {
 // -----------------------------------------------------------------------------
 
     socket.on("updateUserMedia", ({ type, currentMediaStatus }) => {
-      if (currentMediaStatus !== null ) {
+      if (currentMediaStatus !== null) {
         switch (type) {
           case "video":
             setUserVdoStatus(currentMediaStatus);
@@ -282,7 +283,7 @@ const VideoState = ({ children }) => {
         myVdoStatus,
         setMyVdoStatus,
         userVdoStatus,
-        setUserVdoStatus,
+        setUserVdoStatus,  
         updateVideo,
         myMicStatus,
         userMicStatus,
@@ -290,8 +291,6 @@ const VideoState = ({ children }) => {
         screenShare,
         handleScreenSharing,
         fullScreen,
-        room,
-        setRoom,
         joinRoom,
         message,
         // messageReceived,

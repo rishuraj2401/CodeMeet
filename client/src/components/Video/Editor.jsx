@@ -115,19 +115,19 @@ const timeoutRef1 = useRef(null);
 function handleChange(event) {
 
   const newValue = event;
-  clearTimeout(timeoutRef.current);
-  timeoutRef.current = setTimeout(() => {
+  // clearTimeout(timeoutRef.current);
+  // timeoutRef.current = setTimeout(() => {
     setMessage(newValue);
     console.log('value1:', newValue);
     console.log('message1:', message.length ,message); 
-  }, 3);
-  clearTimeout(timeoutRef1.current);
-  timeoutRef1.current = setTimeout(() => {
+  // }, 3);
+  // clearTimeout(timeoutRef1.current);
+  // timeoutRef1.current = setTimeout(() => {
     if(typeof message==='string'){
 sendMessage()
 
     }
-  },3)
+  // },3)
 }
 
 useEffect(() => {

@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect, useRef, useCallback } from "rea
 import { Input, Button, Tooltip, Modal, message } from "antd";
 import Phone from "../../assests/phone.gif";
 import Teams from "../../assests/teams.mp3";
-import * as classes from "./Options.module.css";
+import styles from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
-import Hang from "../../assests/hang.svg";
+// import Hang from "../../assests/hang.svg";
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -40,15 +40,8 @@ const Options = () => {
     callUser,
     leaveCall,
     answerCall,
-    otherUser,
     setOtherUser,
     leaveCall1,
-    room,
-        setRoom,
-        joinRoom,
-        // message,
-        // messageReceived,
-        setMessage,
         // setMessageReceived,
   } = useContext(VideoContext);
   
@@ -73,38 +66,10 @@ const Options = () => {
       setOtherUser(call.from);
     } else setIsModalVisible(false);
   }, [call.isReceivingCall]);
-
-  // const calljoin = ()=>{
-  //   // if (name.length) callUser(idToCall);
-  //   // else message.error("Please enter your name to call!");
-  //   joinRoom();
-  //   console.log(room ,'joiiiined');
-  // }
-  // var x=me;
-  //  const copyC=(event)=>{
-  //   message.success("Code copied successfully!");
-   
-  //   setRoom((x));
-  //   // joinRoom();
-  //   console.log('this is 2' ,room);
-
-  //  }
-  //  const copyC1=(event)=>{
-   
-  //   setRoom((x));
-  //   joinRoom();
-  //   console.log('this is 1' ,room);
-
-  //  }
-  // const callset=(event)=>{
-  //   setIdToCall(event.target.value) 
-  //   setRoom(event.target.value);
-  //   console.log('this is 3' ,room);
-  //   }
   return (
     <>
-    <div className={classes.options}>
-      <div className={classes.name} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-around"}}>
+    <div className={styles.options}>
+      <div className={styles.name} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-around"}}>
       <div>
 
       <p2 >Your Name</p2>
@@ -119,20 +84,20 @@ const Options = () => {
             setName(e.target.value);
             localStorage.setItem("name", e.target.value);
           }}
-          className={classes.inputgroup}
+          className={styles.inputgroup}
           />
         </div>
       </div>
       
       
-      <div className={classes.roomCode} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-evenly"}}>
+      <div className={styles.roomCode} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-evenly"}}>
       <div>
 
       <p2>Room Code</p2>
       <Input
         placeholder={callId}
         size="large"
-        className={classes.inputgroup}
+        className={styles.inputgroup}
         value={idToCall}
         onChange={(e) => {setIdToCall(e.target.value) } }
         style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
@@ -146,16 +111,16 @@ const Options = () => {
   </div>
      
      </div>
-     <div className={classes.copyCode} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-around",flexWrap:"wrap"}}>
+     <div className={styles.copyCode} style={{display:"inline-flex" ,textAlign:"center" ,justifyContent:"space-around",flexWrap:"wrap"}}>
      {callAccepted && !callEnded ? (
          
          <Button
            variant="contained"
            onClick={leaveCall}
-           className={classes.hang}
+           className={styles.hang}
            tabIndex="0"
          >
-           <img src={Hang} alt="hang up" style={{ height: "15px" }} />
+           {/* <img src={Hang} alt="hang up" style={{ height: "15px" }} /> */}
            &nbsp; Leave
          </Button>
        ) : (
@@ -166,7 +131,7 @@ const Options = () => {
              if (name.length) {callUser(idToCall) ;}
              else message.error("Please enter your name to call!");
            }}
-           className={classes.btn}
+           className={styles.btn}
            tabIndex="0"
          >
            Join
@@ -178,7 +143,7 @@ const Options = () => {
           <Button
             type="primary"
             icon={<CopyOutlined />}
-            className={classes.btn}
+            className={styles.btn}
             tabIndex="0"
             onClick={(event)=>{
               message.success("Code copied successfully!");
@@ -188,30 +153,30 @@ const Options = () => {
           </Button>
         </CopyToClipboard>
         </div>
-        <div className={classes.share_options}>
+        <div className={styles.share_options}>
          
-         <div className={classes.share_social}>
+         <div className={styles.share_social}>
            <WhatsappShareButton
              url={`https://interviewapp-o3fbihuwj-rishuraj2401.vercel.app/`}
              title={`Join this meeting with the given code "${me}"\n`}
              separator="Link: "
-             className={classes.share_icon}
+             className={styles.share_icon}
            >
              <WhatsappIcon size={26} round />
            </WhatsappShareButton>
            <FacebookShareButton
              url={`https://interviewapp-o3fbihuwj-rishuraj2401.vercel.app/`}
              title={`Join this meeting with the given code "${me}"\n`}
-             className={classes.share_icon}
+             className={styles.share_icon}
            >
              <FacebookIcon size={26} round />
            </FacebookShareButton>
            <TwitterShareButton
              url={`https://interviewapp-o3fbihuwj-rishuraj2401.vercel.app/`}
              title={`Join this meeting with the given code  "${me}"\n`}
-             className={classes.share_icon}
+             className={styles.share_icon}
            >
-             <TwitterIcon size={26} round className={classes.share_border} />
+             <TwitterIcon size={26} round className={styles.share_border} />
            </TwitterShareButton>
          </div>
       </div>
@@ -236,15 +201,15 @@ const Options = () => {
           {/* <img
             src={Phone}
             alt="phone ringing"
-            className={classes.phone}
+            className={styles.phone}
             style={{ display: "inline-block" }}
           /> */}
         </h1>
       </div>
-      <div className={classes.btnDiv}>
+      <div className={styles.btnDiv}>
         <Button
           variant="contained"
-          className={classes.answer}
+          className={styles.answer}
           color="#29bb89"
           icon={<PhoneOutlined />}
           onClick={() => {
@@ -257,7 +222,7 @@ const Options = () => {
         </Button>
         <Button
           variant="contained"
-          className={classes.decline}
+          className={styles.decline}
           icon={<PhoneOutlined />}
           onClick={() => {
             setIsModalVisible(false);
